@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6791011353, app-clip-bundle-id=com.voiceqr.app.Clip, app-clip-display=card">
+<title>Talqo — A voice is sealed in this code</title>
+<style>
+  :root { color-scheme: light dark; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    background: #FBF7F0; color: #3D2B24; padding: 24px;
+  }
+  @media (prefers-color-scheme: dark) { body { background: #1A1614; color: #F0E9E0; } }
+  .card { max-width: 420px; width: 100%; text-align: center; }
+  .icon { width: 88px; height: 88px; margin: 0 auto 24px; display: block; }
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 12px; }
+  p.lead { font-size: 17px; line-height: 1.6; opacity: .75; margin-bottom: 28px; }
+  .btn {
+    display: block; width: 100%; padding: 16px; border-radius: 14px;
+    font-size: 17px; font-weight: 600; text-decoration: none; margin-bottom: 12px;
+  }
+  .btn-primary { background: #E0725C; color: #fff; }
+  .btn-secondary { background: rgba(120,120,128,.16); color: inherit; }
+  .steps { text-align: left; font-size: 15px; line-height: 2; opacity: .75; margin: 20px 0; }
+  .privacy { font-size: 12px; opacity: .45; margin-top: 28px; line-height: 1.6; }
+  #wechat-tip {
+    display: none; background: rgba(255,159,10,.15); border-radius: 12px;
+    padding: 14px; font-size: 14px; line-height: 1.6; margin-bottom: 20px; text-align: left;
+  }
+  [data-l] { display: none; }
+</style>
+</head>
+<body>
+<div class="card">
+  <svg class="icon" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="4" y="4" width="80" height="80" rx="18" fill="#E0725C"/>
+    <rect x="22" y="34" width="6" height="20" rx="3" fill="#fff"/>
+    <rect x="34" y="26" width="6" height="36" rx="3" fill="#fff"/>
+    <rect x="46" y="20" width="6" height="48" rx="3" fill="#fff" opacity=".9"/>
+    <rect x="58" y="30" width="6" height="28" rx="3" fill="#fff"/>
+  </svg>
+
+  <h1 data-l="en">A voice is sealed in this code</h1>
+  <h1 data-l="zh">这是一条语音留言</h1>
+  <p class="lead" data-l="en">Someone sealed a real voice inside this QR code.<br>Open it with Talqo to hear it.</p>
+  <p class="lead" data-l="zh">有人把一段声音封存进了这个二维码。<br>用 Talqo 打开,就能听到它。</p>
+
+  <div id="wechat-tip">
+    <span data-l="zh">你正在微信内打开:请点右上角「···」,选择<strong>「在浏览器中打开」</strong>,才能跳转到 App。</span>
+    <span data-l="en">You are viewing this inside WeChat. Tap “···” in the top-right corner and choose <strong>“Open in Browser”</strong> to launch the app.</span>
+  </div>
+
+  <a class="btn btn-primary" id="open-app" href="#">
+    <span data-l="en">Listen in Talqo</span><span data-l="zh">打开 Talqo 收听</span>
+  </a>
+  <a class="btn btn-secondary" href="https://apps.apple.com/" id="store-link">
+    <span data-l="en">Get Talqo (coming soon)</span><span data-l="zh">下载 Talqo(即将上架)</span>
+  </a>
+
+  <div class="steps">
+    <span data-l="en">Already have Talqo? Two ways to listen:<br>
+    1. Tap “Listen in Talqo” above;<br>
+    2. Or scan this code again with your camera — it opens the app directly.</span>
+    <span data-l="zh">已安装 Talqo?两种方式收听:<br>
+    1. 点上方「打开 Talqo 收听」;<br>
+    2. 或直接用系统相机重新扫这个码,会自动跳进 App。</span>
+  </div>
+
+  <p class="privacy">
+    <span data-l="en">The voice lives entirely inside the code itself — no servers involved.
+    This is a static page; nothing is collected or uploaded.
+    Format: VQR v1 (open specification). QR Code is a registered trademark of DENSO WAVE INCORPORATED.</span>
+    <span data-l="zh">语音数据完整封存在二维码本身,不经过任何服务器;本页面是纯静态页,不收集、不上传任何内容。
+    格式规范:VQR v1(开放格式)。QR Code 是 DENSO WAVE INCORPORATED 的注册商标。</span>
+  </p>
+</div>
+<script>
+  // 语言自适应:zh* 显示中文,其余英文;fragment(载荷)原样转交自定义 scheme,不发往任何服务器
+  var zh = /^zh/i.test(navigator.language || "");
+  document.documentElement.lang = zh ? "zh-CN" : "en";
+  document.querySelectorAll("[data-l]").forEach(function (el) {
+    el.style.display = (el.getAttribute("data-l") === (zh ? "zh" : "en")) ? "" : "none";
+  });
+  var h = location.hash || "";
+  document.getElementById("open-app").href = "voiceqr://v/" + h;
+  if (/MicroMessenger/i.test(navigator.userAgent)) {
+    document.getElementById("wechat-tip").style.display = "block";
+  }
+</script>
+</body>
+</html>

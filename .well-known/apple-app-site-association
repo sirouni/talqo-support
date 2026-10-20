@@ -1,0 +1,26 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "JR6MLGD7C8.com.voiceqr.app",
+        "paths": [
+          "/v",
+          "/v/*"
+        ]
+      },
+      {
+        "appID": "JR6MLGD7C8.com.talqo.app",
+        "paths": [
+          "/v",
+          "/v/*"
+        ]
+      }
+    ]
+  },
+  "appclips": {
+    "apps": [
+      "JR6MLGD7C8.com.voiceqr.app.Clip"
+    ]
+  }
+}
