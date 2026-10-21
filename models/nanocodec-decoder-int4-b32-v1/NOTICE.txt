@@ -1,0 +1,16 @@
+Licensed by NVIDIA Corporation under the NVIDIA Open Model License
+
+Source: https://huggingface.co/nvidia/nemo-nano-codec-22khz-0.6kbps-12.5fps
+Talqo derivative: decoder-only ONNX graph, INT4 block-32 packed large weights.
+Weights are restored to FP16 before inference; activation computation is unchanged.
+Bias and small tensors retain their original precision. The full Talqo app uses FP16.
+Source FP16 decoder SHA-256:
+d2477743aeb18bda2826f2999a38f7beed4211a6794040f44be6ca4f8c6122ee
+INT4 download archive SHA-256:
+4b54309937dbe332bf943bf83c3a61287882ef1aa0ce84268e368cc4a37db65d
+Restored ONNX graph SHA-256:
+798e564b44d22449a0135081a8e7d725f86797f757d107684044d50aa575c973
+Restored FP16 external weights SHA-256:
+cb4325131115e7e2b00a8a9ea695914cb767ff2f2b6dffe5ce7ba05a1a5527a4
+
+ONNX Runtime is licensed under the MIT License. See ONNX-Runtime-LICENSE.txt.
